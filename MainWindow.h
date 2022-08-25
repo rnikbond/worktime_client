@@ -3,6 +3,8 @@
 #define MAINWINDOW_H
 //---------------------------------
 #include <QMainWindow>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
 //---------------------------------
 namespace Ui { class MainWindow; }
 //---------------------------------
@@ -10,6 +12,8 @@ namespace Ui { class MainWindow; }
 class MainWindow : public QMainWindow {
 
     Q_OBJECT
+
+    QNetworkAccessManager* HttpManager;
 
 public:
 
@@ -19,6 +23,14 @@ public:
 private:
 
     Ui::MainWindow* ui;
+
+private slots:
+
+    void httpRequestLogin();
+    void httpRequestStartTicker();
+    void httpRequestStopTicker();
+
+    void getResponse( QNetworkReply* response );
 };
 //---------------------------------------------------------------------------------------------------
 
